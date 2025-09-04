@@ -103,31 +103,56 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <span class="text-2xl font-semibold text-gray-900">CarOfferAI</span>
-                    <span class="coming-soon-badge ml-3">Beta</span>
+                    <span class="text-xl sm:text-2xl font-semibold text-gray-900">CarOfferAI</span>
+                    <span class="coming-soon-badge ml-2 sm:ml-3">Beta</span>
                 </div>
-                <div class="flex items-center space-x-4">
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-4">
                     <a href="#" class="text-gray-600 hover:text-gray-900 px-3 py-2">Buy</a>
                     <a href="#" class="text-gray-600 hover:text-gray-900 px-3 py-2">Sell</a>
                     <a href="#" class="text-gray-600 hover:text-gray-900 px-3 py-2">About Us</a>
                     <a href="#" class="pill-button pill-button-outline">Dealer Demo</a>
                     <a href="#" class="pill-button pill-button-primary">Dealer Login</a>
                 </div>
+                
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                    <svg id="menu-icon" class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 text-gray-600 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3 pt-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-2">Buy</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-2">Sell</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-2">About Us</a>
+                    <div class="px-4 pt-2 space-y-2">
+                        <a href="#" class="pill-button pill-button-outline w-full text-center">Dealer Demo</a>
+                        <a href="#" class="pill-button pill-button-primary w-full text-center">Dealer Login</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-white py-16 md:py-24">
+    <section class="bg-white py-12 md:py-24">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="coming-soon-badge mb-6">Coming Soon - Early Access Available</div>
-            <h1 class="text-4xl md:text-5xl font-normal text-gray-900 mb-6">
-                The AI-powered marketplace for<br>smart car dealers
+            <div class="coming-soon-badge mb-4 md:mb-6">Coming Soon - Early Access Available</div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-normal text-gray-900 mb-4 md:mb-6">
+                The AI-powered marketplace for<br class="hidden sm:block">smart car dealers
             </h1>
-            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p class="text-base sm:text-lg text-gray-600 mb-6 md:mb-8 max-w-2xl mx-auto">
                 Buy and sell inventory instantly with AI-driven pricing, nationwide dealer network, and guaranteed results.
             </p>
-            <div class="flex justify-center space-x-4">
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
                 <button class="pill-button pill-button-primary">
                     Request Early Access
                 </button>
@@ -139,37 +164,37 @@
     </section>
 
     <!-- Simple Stats -->
-    <section class="bg-gray-50 py-12 border-t border-b border-gray-200">
+    <section class="bg-gray-50 py-8 md:py-12 border-t border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
                 <div>
-                    <div class="text-3xl font-semibold text-gray-900">24hr</div>
-                    <div class="text-sm text-gray-600 mt-1">Approval Time</div>
+                    <div class="text-2xl sm:text-3xl font-semibold text-gray-900">24hr</div>
+                    <div class="text-xs sm:text-sm text-gray-600 mt-1">Approval Time</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-semibold text-gray-900">45-Day</div>
-                    <div class="text-sm text-gray-600 mt-1">Buy-Back Guarantee</div>
+                    <div class="text-2xl sm:text-3xl font-semibold text-gray-900">45-Day</div>
+                    <div class="text-xs sm:text-sm text-gray-600 mt-1">Buy-Back Guarantee</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-semibold text-gray-900">Instant</div>
-                    <div class="text-sm text-gray-600 mt-1">AI Pricing</div>
+                    <div class="text-2xl sm:text-3xl font-semibold text-gray-900">Instant</div>
+                    <div class="text-xs sm:text-sm text-gray-600 mt-1">AI Pricing</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-semibold text-gray-900">Zero</div>
-                    <div class="text-sm text-gray-600 mt-1">Setup Fees</div>
+                    <div class="text-2xl sm:text-3xl font-semibold text-gray-900">Zero</div>
+                    <div class="text-xs sm:text-sm text-gray-600 mt-1">Setup Fees</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Sell Section -->
-    <section class="py-16 bg-white">
+    <section class="py-12 md:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <h2 class="text-3xl font-normal text-gray-900 mb-4">
+            <div class="max-w-3xl mx-auto text-center mb-8 md:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-normal text-gray-900 mb-3 md:mb-4">
                     The Easy Way to Sell Used Inventory
                 </h2>
-                <p class="text-gray-600">
+                <p class="text-gray-600 text-sm sm:text-base">
                     Sell online to our nationwide network of dealers with instant offers at the time of appraisal. 
                     Increase your profit and remove the risks of stale inventory.
                 </p>
@@ -207,20 +232,20 @@
     </section>
 
     <!-- Buy Section -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-12 md:py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <h2 class="text-3xl font-normal text-gray-900 mb-4">
+            <div class="max-w-3xl mx-auto text-center mb-8 md:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-normal text-gray-900 mb-3 md:mb-4">
                     Buy Used Cars with Confidence
                 </h2>
-                <p class="text-gray-600">
+                <p class="text-gray-600 text-sm sm:text-base">
                     Buy used cars at scale with our BuyingMatrix™. Use industry-leading data to make smarter decisions 
                     & sit back as your ideal inventory is delivered to your lot.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="bg-white p-6 rounded-lg border border-gray-200">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-5 md:p-6 rounded-lg border border-gray-200">
                     <div class="number-badge">1</div>
                     <h3 class="font-semibold mb-2">Get Insights</h3>
                     <p class="text-gray-600 text-sm">
@@ -228,7 +253,7 @@
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="bg-white p-5 md:p-6 rounded-lg border border-gray-200">
                     <div class="number-badge">2</div>
                     <h3 class="font-semibold mb-2">Set Preferences</h3>
                     <p class="text-gray-600 text-sm">
@@ -236,7 +261,7 @@
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="bg-white p-5 md:p-6 rounded-lg border border-gray-200">
                     <div class="number-badge">3</div>
                     <h3 class="font-semibold mb-2">AI Matching</h3>
                     <p class="text-gray-600 text-sm">
@@ -244,7 +269,7 @@
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="bg-white p-5 md:p-6 rounded-lg border border-gray-200">
                     <div class="number-badge">4</div>
                     <h3 class="font-semibold mb-2">We Deliver</h3>
                     <p class="text-gray-600 text-sm">
@@ -256,15 +281,15 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-white">
+    <section class="py-12 md:py-16 bg-white">
         <div class="max-w-4xl mx-auto text-center px-4">
-            <h2 class="text-3xl font-normal text-gray-900 mb-4">
+            <h2 class="text-2xl sm:text-3xl font-normal text-gray-900 mb-4">
                 Ready to join the future of car dealing?
             </h2>
-            <p class="text-gray-600 mb-8">
+            <p class="text-gray-600 mb-6 md:mb-8">
                 Get early access to CarOfferAI and start transforming your inventory management.
             </p>
-            <div class="flex justify-center space-x-4">
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
                 <button class="pill-button pill-button-primary">
                     Request Early Access
                 </button>
@@ -279,42 +304,60 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-12">
+    <footer class="bg-white border-t border-gray-200 py-8 md:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">CarOfferAI</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 md:mb-4">CarOfferAI</h3>
                     <p class="text-sm text-gray-600">The AI-powered marketplace for smart dealers</p>
                 </div>
                 <div>
-                    <h4 class="font-medium text-gray-900 mb-3">For Dealers</h4>
-                    <ul class="space-y-2 text-sm text-gray-600">
+                    <h4 class="font-medium text-gray-900 mb-2 md:mb-3 text-sm">For Dealers</h4>
+                    <ul class="space-y-1 md:space-y-2 text-sm text-gray-600">
                         <li><a href="#" class="hover:text-gray-900">Buy Inventory</a></li>
                         <li><a href="#" class="hover:text-gray-900">Sell Inventory</a></li>
                         <li><a href="#" class="hover:text-gray-900">Pricing Tools</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-medium text-gray-900 mb-3">Resources</h4>
-                    <ul class="space-y-2 text-sm text-gray-600">
+                    <h4 class="font-medium text-gray-900 mb-2 md:mb-3 text-sm">Resources</h4>
+                    <ul class="space-y-1 md:space-y-2 text-sm text-gray-600">
                         <li><a href="#" class="hover:text-gray-900">Blog</a></li>
                         <li><a href="#" class="hover:text-gray-900">Support</a></li>
                         <li><a href="#" class="hover:text-gray-900">API Docs</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-medium text-gray-900 mb-3">Company</h4>
-                    <ul class="space-y-2 text-sm text-gray-600">
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-medium text-gray-900 mb-2 md:mb-3 text-sm">Company</h4>
+                    <ul class="space-y-1 md:space-y-2 text-sm text-gray-600">
                         <li><a href="#" class="hover:text-gray-900">About</a></li>
                         <li><a href="#" class="hover:text-gray-900">Contact</a></li>
                         <li><a href="#" class="hover:text-gray-900">Privacy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-600">
+            <div class="border-t border-gray-200 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-sm text-gray-600">
                 <p>&copy; 2025 CarOfferAI. All rights reserved.</p>
             </div>
         </div>
     </footer>
+    
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
