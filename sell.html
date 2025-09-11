@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Car - CarOfferAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #202124;
+            background: #ffffff;
+        }
+        
+        .pill-button {
+            border-radius: 24px;
+            padding: 10px 24px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .pill-button-primary {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .pill-button-primary:hover {
+            background: #1765cc;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+        
+        .pill-button-outline {
+            background: white;
+            color: #1a73e8;
+            border: 1px solid #dadce0;
+        }
+        
+        .pill-button-outline:hover {
+            background: #f8f9fa;
+            border-color: #1a73e8;
+        }
+        
+        .coming-soon-badge {
+            background: #fef7e0;
+            color: #ea8600;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .success-badge {
+            background: #e6f4ea;
+            color: #1e8e3e;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .number-badge {
+            width: 40px;
+            height: 40px;
+            background: #202124;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .requirement-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .requirement-card:hover {
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+            border-color: #1a73e8;
+        }
+        
+        .icon-circle {
+            width: 32px;
+            height: 32px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .upload-button {
+            background: #1a73e8;
+            color: white;
+            border-radius: 24px;
+            padding: 16px 32px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .upload-button:hover {
+            background: #1765cc;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            transform: translateY(-1px);
+        }
+        
+        @media (min-width: 768px) {
+            .number-badge {
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl sm:text-2xl font-semibold text-gray-900">CarOfferAI</a>
+                    <span class="coming-soon-badge ml-2 sm:ml-3">Beta</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 px-3 py-2">Buy</a>
+                    <a href="sell.html" class="text-gray-900 font-medium px-3 py-2">Sell</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 px-3 py-2">About Us</a>
+                    <a href="#" class="pill-button pill-button-outline">Dealer Demo</a>
+                    <a href="#" class="pill-button pill-button-primary">Dealer Login</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                    <svg id="menu-icon" class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 text-gray-600 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3 pt-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-2">Buy</a>
+                    <a href="sell.html" class="text-gray-900 font-medium px-4 py-2">Sell</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-2">About Us</a>
+                    <div class="px-4 pt-2 space-y-2">
+                        <a href="#" class="pill-button pill-button-outline w-full text-center">Dealer Demo</a>
+                        <a href="#" class="pill-button pill-button-primary w-full text-center">Dealer Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-12 md:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="success-badge mb-4 md:mb-6">$1,000 Commission Per Sale</div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-normal text-gray-900 mb-4 md:mb-6">
+                Sell Your Car with<br class="hidden sm:block">Our Partner Network
+            </h1>
+            <p class="text-base sm:text-lg text-gray-600 mb-6 md:mb-8 max-w-2xl mx-auto">
+                Get top dollar for your vehicle through our trusted buyer network. Quick approval, guaranteed payment, and we handle all the logistics.
+            </p>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="py-8 md:py-12 bg-gray-50 border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="number-badge mx-auto">1</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Submit Documents</h3>
+                    <p class="text-gray-600 text-sm">Upload required documents and vehicle photos</p>
+                </div>
+                <div class="text-center">
+                    <div class="number-badge mx-auto">2</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">24-Hour Approval</h3>
+                    <p class="text-gray-600 text-sm">Get a competitive cash offer within 24 hours</p>
+                </div>
+                <div class="text-center">
+                    <div class="number-badge mx-auto">3</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Get Paid</h3>
+                    <p class="text-gray-600 text-sm">Complete sale and receive your $1,000 commission</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="py-12 md:py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-normal text-gray-900 mb-3 md:mb-4">
+                    Private Owner Purchase Requirements
+                </h2>
+                <p class="text-gray-600 text-sm sm:text-base">
+                    Please prepare the following documents and photos for a quick approval process
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">Front & Back of Title</div>
+                        <div class="text-sm text-gray-600">Clear photos of both sides</div>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">10-Day Official Payoff</div>
+                        <div class="text-sm text-gray-600">For vehicles with liens</div>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">Front & Back of Driver License</div>
+                        <div class="text-sm text-gray-600">Current valid license</div>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">Copy of Registration</div>
+                        <div class="text-sm text-gray-600">Current vehicle registration</div>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">Picture of Odometer</div>
+                        <div class="text-sm text-gray-600">Current mileage reading</div>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">Picture of VIN on Windshield</div>
+                        <div class="text-sm text-gray-600">Vehicle identification number</div>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">Picture of VIN on Door Jam</div>
+                        <div class="text-sm text-gray-600">Driver side door VIN sticker</div>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="icon-circle">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-medium text-gray-900">Your Cell Phone Number</div>
+                        <div class="text-sm text-gray-600">For any questions from our office</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="bg-gray-50 rounded-lg p-8 text-center">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Ready to Upload Your Documents?</h3>
+                <p class="text-gray-600 mb-6">Click below to securely upload all required documents via Dropbox</p>
+                <!-- Replace YOUR_DROPBOX_UPLOAD_LINK with your actual Dropbox link -->
+                <a href="YOUR_DROPBOX_UPLOAD_LINK" target="_blank" class="upload-button">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg>
+                    Upload Documents to Dropbox
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-12 md:py-16 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-lg border border-gray-200 p-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-6 text-center">Contact Information</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-3">Send Documents To:</h4>
+                        <div class="space-y-2">
+                            <p class="text-sm text-gray-600">
+                                <a href="mailto:cstrickland@dupontregistry.com" class="text-blue-600 hover:underline">cstrickland@dupontregistry.com</a>
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                <a href="mailto:taylor.green@dupontregistry.com" class="text-blue-600 hover:underline">taylor.green@dupontregistry.com</a>
+                            </p>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-3">
+                            Please email all information to finalize the transaction. Thank you.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-3">Buyer Information:</h4>
+                        <div class="space-y-1">
+                            <p class="text-sm text-gray-900 font-medium">Collin Strickland</p>
+                            <p class="text-sm text-gray-600">Buyer</p>
+                            <p class="text-sm text-gray-600">
+                                <a href="tel:417-848-1670" class="text-blue-600 hover:underline">417-848-1670</a>
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                6100A East Division Street<br>
+                                Lebanon, TN 37090
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                    <p class="text-center text-green-800 font-medium">
+                        💰 Earn $1,000 commission upon successful completion of sale
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 md:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 md:mb-4">CarOfferAI</h3>
+                    <p class="text-sm text-gray-600">The AI-powered marketplace for smart dealers</p>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 mb-2 md:mb-3 text-sm">For Dealers</h4>
+                    <ul class="space-y-1 md:space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">Buy Inventory</a></li>
+                        <li><a href="sell.html" class="hover:text-gray-900">Sell Inventory</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Pricing Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-900 mb-2 md:mb-3 text-sm">Resources</h4>
+                    <ul class="space-y-1 md:space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Support</a></li>
+                        <li><a href="#" class="hover:text-gray-900">API Docs</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-medium text-gray-900 mb-2 md:mb-3 text-sm">Company</h4>
+                    <ul class="space-y-1 md:space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">About</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Contact</a></li>
+                        <li><a href="#" class="hover:text-gray-900">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-sm text-gray-600">
+                <p>&copy; 2025 CarOfferAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
